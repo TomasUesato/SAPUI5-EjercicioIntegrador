@@ -1,0 +1,58 @@
+<mvc:View xmlns:layout="sap.ui.layout" 
+    controllerName="EjercicioIntegrador.EjercicioIntegrador.controller.Main" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true" 
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+
+	<Page id="page" title="{i18n>title}">
+		<content>
+            <HBox justifyContent="SpaceAround"> 
+                
+                
+                <Label/>
+				<Input
+			        id="idInputFecha"
+                    editable="true"
+                    type="Date"
+                    valueStateText="{i18n>inputFecha}"
+                    value="{SearchModel>/fecha}"
+                    width="100%"/>
+
+                
+               
+            <ComboBox
+				items="{productosJSON>/productos}"
+                selectedKey="{SearchModel>/proveedor}"
+                placeholder="{i18n>displayProveedor}">
+                    <core:Item key="{productosJSON>proveedor}" text="{productosJSON>proveedor}" />
+			</ComboBox>
+  
+			<Input
+			    id="idPais"
+                value="{SearchModel>/pais}"
+                placeholder="{i18n>displayPais}"
+                editable="true"
+                width="100%"/>
+
+            <Button type="Emphasized" text="{i18n>textoBoton}" press=".onOpenDialog"/>
+            
+
+            </HBox>
+
+            <l:BlockLayout background="Light">
+            <l:BlockLayoutRow>
+					<l:BlockLayoutCell>
+						<Panel id="idPanel" headerText="{i18n>tituloPanel}" expandable="true" visible="false">
+								<core:Fragment fragmentName="EjercicioIntegrador.EjercicioIntegrador.Fragments.Tabla" type="XML" id="Panel2"/>
+						</Panel>
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
+                </l:BlockLayout>
+            
+
+        </content>
+	</Page>
+</mvc:View>
